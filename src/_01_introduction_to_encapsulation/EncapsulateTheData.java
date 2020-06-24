@@ -1,5 +1,7 @@
 package _01_introduction_to_encapsulation;
 
+import static org.junit.Assert.assertEquals;
+
 /*
  * Encapsulation is a way of protecting the data in a class from being
  * unintentionally altered from another class.
@@ -15,20 +17,67 @@ package _01_introduction_to_encapsulation;
  * 
  * */
 
-
 public class EncapsulateTheData {
-	//1. Encapsulate the member variables.
-	//   Add restrictions to the setters according to the comment.
-	
-	//2. Create a new JUnit Test case and write tests to verify that 
-	//   the member variables' getters and setters are working
-	
-	int itemsReceived; //must not be negative. All negative arguments get set to 0.
-	float degreesTurned; //must be locked between 0.0 and 360.0 inclusive.
-	String nomenclature = " "; //must not be set to a blank string. Blank Strings get set to a space
-	Object memberObj;  //must not be a String.  If it is a String, set it equal to a new Object();
-	
+	// 1. Encapsulate the member variables.
+	// Add restrictions to the setters according to the comment.
+
+	// 2. Create a new JUnit Test case and write tests to verify that
+	// the member variables' getters and setters are working
+
+	private int itemsReceived; // must not be negative. All negative arguments get set to 0.
+	private float degreesTurned; // must be locked between 0.0 and 360.0 inclusive.
+	private String nomenclature = " "; // must not be set to a blank string. Blank Strings get set to a space
+	private Object memberObj; // must not be a String. If it is a String, set it equal to a new Object();
+
+	public int getItemsReceived() {
+		return itemsReceived;
+	}
+
+	public void setItemsReceived(int newItemsReceived) {
+		if (newItemsReceived < 0) {
+			newItemsReceived = 0;
+		}
+		this.itemsReceived = newItemsReceived;
+	}
+
+	public float getDegreesTurned() {
+		return degreesTurned;
+	}
+
+	public void setDegreesTurned(float newDegreesTurned) {
+		if (newDegreesTurned > 360.0) {
+			newDegreesTurned = 360.0f;
+		} else if (newDegreesTurned < 0.0) {
+			newDegreesTurned = 0.0f;
+		}
+		this.degreesTurned = newDegreesTurned;
+	}
+
+	public String getNomenclature() {
+		return nomenclature;
+	}
+
+	public void setNomenclature(String newNomenclature) {
+		if (newNomenclature.equals("")) {
+			newNomenclature = " ";
+		}
+		this.nomenclature = newNomenclature;
+	}
+
+	public Object getMemberObj() {
+		return memberObj;
+	}
+
+	public void setMemberObj(Object newMemberObj) {
+		if (newMemberObj.getClass() == String.class) {
+			newMemberObj = new Object();
+		}
+		this.memberObj = newMemberObj;
+	}
+
+
 	public static void main(String[] args) {
+		EncapsulateTheData e = new EncapsulateTheData();
 		
 	}
 }
